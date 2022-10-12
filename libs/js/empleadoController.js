@@ -136,25 +136,6 @@ function recibirDatosCandidato(){
 	document.getElementById("departamento").value = departamento;
 }
 
-$(document).ready(function(){
-	$("#loginUsuario").click(function(){
-	
-		var usuario = $("#usuario").val();
-		var password = $("#password").val();
-	
-		db.transaction(function(transaction){
-			var sql="SELECT * FROM usuarios where usuario='"+usuario+"' AND password='"+password+"';";
-			transaction.executeSql(sql,undefined,function(transaction,result){
-				if(result.rows.length){
-					window.location.href = 'vistaIdiomas.html';
-				}
-				else{
-					alert("Datos no válidos, por favor verificar");
-				}
-			})
-		})
-	});
-})
 
 function verificarRolUsuario(){
 
@@ -323,34 +304,6 @@ function validar_cedula(cedula){
 	// Se comprueba el verificador
 	return (verificador == parseInt(cedula.slice(-1)))
   }
-
-  	function validaCedula(cedula){
-
-            var vnTotal = 0;
-            var vcCedula = pCedula.Replace("-", "");
-            var pLongCed = vcCedula.Trim().Length;
-        	const digitoMult = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1];
-
-            if (pLongCed < 11 || pLongCed > 11)
-                return false;
-
-            for (var vDig = 1; vDig <= pLongCed; vDig++)
-            {
-                var vCalculo = Int32.Parse(vcCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
-                if (vCalculo < 10)
-                    vnTotal += vCalculo;
-                else
-                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
-            }
-
-            if (vnTotal % 10 == 0)
-                return true;
-            else
-                return false;
-        }
-  
-
-
 
 
 })

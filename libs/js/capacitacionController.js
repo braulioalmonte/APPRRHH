@@ -88,25 +88,6 @@ $("#crearCapacitacion").click(function(){
 $("#listarCapacitacion").click(function(){
 	cargarDatos();
 })
-$(document).ready(function(){
-	$("#loginUsuario").click(function(){
-	
-		var usuario = $("#usuario").val();
-		var password = $("#password").val();
-	
-		db.transaction(function(transaction){
-			var sql="SELECT * FROM usuarios where usuario='"+usuario+"' AND password='"+password+"';";
-			transaction.executeSql(sql,undefined,function(transaction,result){
-				if(result.rows.length){
-					window.location.href = 'vistaIdiomas.html';
-				}
-				else{
-					alert("Datos no válidos, por favor verificar");
-				}
-			})
-		})
-	});
-})
 
 function verificarRolUsuario(){
 
@@ -123,7 +104,6 @@ function verificarRolUsuario(){
 }
 
 window.addEventListener("load",verificarRolUsuario);
-
 window.addEventListener("load", cargarDatos);
 
 $("#fechaHasta").focusout(function(){
