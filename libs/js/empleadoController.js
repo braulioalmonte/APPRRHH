@@ -176,11 +176,23 @@ window.addEventListener("load", recibirDatosCandidato);
 window.addEventListener("load", cargarDatos);
 window.addEventListener("load", cargarOpciones);
 
+$("#exportarEmpleado").click(function(){
+	ExportToExcel('xlsx');
+})
+
+function ExportToExcel(type, fn, dl) {
+	var elt = document.getElementById('listaEmpleados');
+	var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+	return dl ?
+	  XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+	  XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+ }
+
 //Funcion para listar y pintar tabla de candidatos en la página web
 function cargarDatos(){
 	$("#listaEmpleados").children().remove();
 	db.transaction(function(transaction){
-		var sql="SELECT * FROM empleados ORDER BY id DESC";
+		var sql="SELECT * FROM empleados ORDER BY fechaIngreso DESC";
 		transaction.executeSql(sql,undefined, function(transaction,result){
 			if(result.rows.length){
 				$("#listaEmpleados").append('<tr><th>ID</th><th>Cedula</th><th>Nombre</th><th>Fecha Ingreso</th><th>Departamento</th><th>Puesto</th><th>Salario</th><th>Estado</th><th></th><th></th></tr>');
