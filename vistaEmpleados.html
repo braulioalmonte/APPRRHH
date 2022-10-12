@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>App Recursos Humanos</title>
+<meta name="viewport" content="user-scalable=no, width=device,with" charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="libs/css/estilos.css" />
+
+<script type="text/javascript" src="libs/js/jquery.js"></script>
+<script type="text/javascript" src="libs/js/empleadoController.js"></script>
+<script type="text/javascript" src="libs/js/table2excel.js"></script>
+<script type="text/javascript" src="libs/js/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+
+
+</head>
+
+<body>
+<h1> App Recursos Humanos</h1>
+
+<div class="topnav">
+  <a class="active" href="home.html">Home</a>
+  <a href="vistaCompetencias.html">Competencias</a>
+  <a href="vistaIdiomas.html">Idiomas</a>
+  <a href="vistaCapacitaciones.html">Capacitaciones</a>
+  <a href="vistaPuestos.html">Puestos</a>
+  <a href="vistaCandidatos.html">Candidatos</a>
+  <a href="vistaExperienciaLaboral.html">Experiencia Laboral</a>
+  <a href="vistaEmpleados.html">Empleados</a>
+  <a href="index.html">Sign Out</a>
+</div>
+
+<div class="container">
+<table>
+  <tr>
+    <td>
+      <div class="row">
+        <form>
+        <fieldset>
+        <legend> Cédula </legend>
+        <input type="tel" class="form-control" id="cedula" placeholder="123-1234567-8" pattern="[0-9]{3}-[0-9]{7}-[0-9]{1}" readonly/>
+        <br />
+        <legend> Nombre </legend>
+        <input type="text" class="form-control" id="nombre" readonly/>
+        <br />
+        <legend> Fecha Ingreso </legend>
+        <input type="date"  class="form-control" id="fechaIngreso">
+        <br />
+        <legend> Departamento </legend>
+        <input type="text" class="form-control" id="departamento" readonly/>
+        <br />
+        <legend> Puesto </legend>
+        <input type="text" class="form-control" id="puesto" readonly/>
+
+        <br />
+        <legend> Salario </legend>
+        <input type="number"  min="0" class="form-control" id="salario">
+        <br />
+        <legend> Estado </legend>
+        <select type="text"  class="form-control" id="estado">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select>
+        <br />
+        
+        <button type="button" id="crearEmpleado" class="btn btn-success">Crear Tabla </button>
+        <button type="button" id="insertarEmpleado" class="btn btn-success">Insertar Registro </button>
+        <button type="button" id="modificarEmpleado" class="btn btn-danger">Modificar Registro </button>
+        <button type="button" id="listarEmpleado" class="btn btn-success">Actualizar</button>
+        <button type="button" id="borrarTodoEmpleado" class="btn btn-danger">ELIMINAR TODO </button>
+        <button type="button" id="recibirEmpleado" class="btn btn-success">Recibir Data Candidato</button>
+        <button type="button" id="exportarEmpleado" class="btn btn-success" onclick="tableToCSV()">Exportar</button>
+
+        </fieldset>
+        </form>
+        <hr />
+        
+        </div>
+    </td>
+    <td>
+      <h2>-
+      </h2>
+    </td>
+    <td>
+      <h1> Lista de Empleados </h1>
+      <table class="table table-borderer table-hover" id="listaEmpleados" td width="200px" style="width:1000px">
+      
+      </table>
+    </td>
+  </tr>
+</table>
+<script>
+
+  function tableToCSV() {
+ 
+ // Variable to store the final csv data
+ var csv_data = [];
+
+ // Get each row data
+ var rows = document.getElementsByTagName('tr');
+ for (var i = 0; i < rows.length; i++) {
+
+     // Get each column data
+     var cols = rows[i].querySelectorAll('td,th');
+
+     // Stores each csv row data
+     var csvrow = [];
+     for (var j = 0; j < cols.length; j++) {
+
+         // Get the text data of each cell
+         // of a row and push it to csvrow
+         csvrow.push(cols[j].innerHTML);
+     }
+
+     // Combine each column value with comma
+     csv_data.push(csvrow.join(","));
+ }
+
+ // Combine each row data with new line character
+ csv_data = csv_data.join('\n');
+
+ // Call this function to download csv file 
+ downloadCSVFile(csv_data);
+
+}
+
+function downloadCSVFile(csv_data) {
+ 
+ // Create CSV file object and feed
+ // our csv_data into it
+ CSVFile = new Blob([csv_data], {
+     type: "text/csv"
+ });
+
+ // Create to temporary link to initiate
+ // download process
+ var temp_link = document.createElement('a');
+
+ // Download csv file
+ temp_link.download = "GfG.csv";
+ var url = window.URL.createObjectURL(CSVFile);
+ temp_link.href = url;
+
+ // This link should not be displayed
+ temp_link.style.display = "none";
+ document.body.appendChild(temp_link);
+
+ // Automatically click the link to
+ // trigger download
+ temp_link.click();
+ document.body.removeChild(temp_link);
+}
+</script>
+
+
+</div>
+
+</body>
+
+</html>

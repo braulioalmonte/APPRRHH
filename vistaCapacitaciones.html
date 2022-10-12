@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>App Recursos Humanos</title>
+<meta name="viewport" content="user-scalable=no, width=device,with" charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="libs/css/estilos.css" />
+
+<script type="text/javascript" src="libs/js/jquery.js"></script>
+<script type="text/javascript" src="libs/js/capacitacionController.js"></script>
+</head>
+
+<body>
+<h1> App Recursos Humanos</h1>
+
+<div class="topnav">
+  <a class="active" href="home.html">Home</a>
+  <a href="vistaCompetencias.html">Competencias</a>
+  <a href="vistaIdiomas.html">Idiomas</a>
+  <a href="vistaCapacitaciones.html">Capacitaciones</a>
+  <a href="vistaPuestos.html">Puestos</a>
+  <a href="vistaCandidatos.html">Candidatos</a>
+  <a href="vistaExperienciaLaboral.html">Experiencia Laboral</a>
+  <a href="vistaEmpleados.html">Empleados</a>
+  <a href="index.html">Sign Out</a>
+</div>
+
+<div class="container">
+<table>
+  <tr>
+    <td>
+      <div class="row">
+        <form>
+        <fieldset>
+        <legend> Descripcion </legend>
+        <input type="text" class="form-control" id="capacitacion"/>
+        <br />
+        <legend> Nivel </legend>
+        <select type="text"  class="form-control" id="nivel">
+            <option value="Grado">Grado</option>
+            <option value="Post-Grado">Post-Grado</option>
+            <option value="Maestria">Maestria</option>
+            <option value="Doctorado">Doctorado</option>
+            <option value="Técnico">Técnico</option>
+            <option value="Gestión">Gestión</option>
+        </select>
+        <br />
+        <legend> Fecha Desde </legend>
+        <input type="date" class="form-control" id="fechaDesde" />
+        <br />
+        
+        <legend> Fecha Hasta </legend>
+        <input type="date" class="form-control" id="fechaHasta" />
+        <br />
+        
+        <legend> Institución </legend>
+        <input type="text" class="form-control" id="institucion" />
+        <br />
+        
+        <button type="button" id="crearCapacitacion" class="btn btn-success">Crear Tabla </button>
+        <button type="button" id="insertarCapacitacion" class="btn btn-success">Insertar Registro </button>
+        <button type="button" id="modificarCapacitacion" class="btn btn-danger">Modificar Registro </button>
+        <button type="button" id="listarCapacitacion" class="btn btn-success">Actualizar</button>
+        <button type="button" id="borrarTodoCapacitacion" class="btn btn-danger">ELIMINAR TODO </button>
+        </fieldset>
+        </form>
+        <hr />
+        
+        </div>
+    </td>
+    <td>
+      <h2>------------
+      </h2>
+    </td>
+    <td>
+      <h1> Lista de Capacitaciones </h1>
+      <table class="table table-borderer table-hover" id="listaCapacitaciones" style="width:715px">
+      
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+</div>
+
+</body>
+
+</html>

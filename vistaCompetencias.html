@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>App Recursos Humanos</title>
+<meta name="viewport" content="user-scalable=no, width=device,with" charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="libs/css/estilos.css" />
+
+<script type="text/javascript" src="libs/js/jquery.js"></script>
+<script type="text/javascript" src="libs/js/competenciaController.js"></script>
+</head>
+
+<body>
+<h1> App Recursos Humanos</h1>
+
+<div class="topnav">
+    <a class="active" href="home.html">Home</a>
+    <a href="vistaCompetencias.html">Competencias</a>
+    <a href="vistaIdiomas.html">Idiomas</a>
+    <a href="vistaCapacitaciones.html">Capacitaciones</a>
+    <a href="vistaPuestos.html">Puestos</a>
+    <a href="vistaCandidatos.html">Candidatos</a>
+    <a href="vistaExperienciaLaboral.html">Experiencia Laboral</a>
+    <a href="vistaEmpleados.html">Empleados</a>
+    <a href="index.html">Sign Out</a>
+  </div>
+
+<div class="container">
+
+  <table>
+    <tr>
+      <td>
+        <div class="row">
+          <form>
+          <fieldset>
+          <legend> Nombre </legend>
+          <input type="text" class="form-control" id="competencia"/>
+          <br />
+          <legend> Estado </legend>
+          <select type="text"  class="form-control" id="estado">
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+          </select>
+          <br />
+          <button type="button" id="crearCompetencia" class="btn btn-success">Crear Tabla </button>
+          <button type="button" id="insertarCompetencia" class="btn btn-success">Insertar Registro </button>
+          <button type="button" id="modificarCompetencia" class="btn btn-danger">Modificar Registro </button>
+          <button type="button" id="listarCompetencia" class="btn btn-success">Actualizar</button>
+          <button type="button" id="borrarTodoCompetencia" class="btn btn-danger">ELIMINAR TODO </button>
+          </fieldset>
+          </form>
+          <hr />
+          
+          </div>
+      </td>
+      <td>
+        <h2>------------
+        </h2>
+      </td>
+      <td>
+        <h1>Lista de Competencias</h1>
+        <table class="table table-borderer table-hover" id="listaCompetencias" style="width:600px">
+        
+        </table>
+      </td>
+    </tr>
+  </table>
+
+
+</div>
+
+</body>
+
+</html>
